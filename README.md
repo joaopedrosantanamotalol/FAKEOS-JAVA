@@ -32,7 +32,7 @@ O objetivo deste projeto é **praticar e consolidar conceitos fundamentais de Ja
 
 - **Java**
 - **Swing**
-  - `JOptionPane`
+  - `JFrame`
   - `JFileChooser`
 - **java.io.File**
 - **Tratamento de exceções (`IOException`)**
