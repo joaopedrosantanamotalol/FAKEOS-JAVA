@@ -64,6 +64,7 @@ Essa abordagem torna o sistema **intuitivo e multiplataforma** (Windows, Linux, 
 
 ## 📁 Estrutura do Projeto
 📦 fakeos
+<br>
 ├── src
 │   ├── Main.java
 │   └── telas
