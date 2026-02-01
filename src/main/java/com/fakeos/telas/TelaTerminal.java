@@ -1,4 +1,4 @@
-package com.fakeos;
+package com.fakeos.telas;
 
 import java.awt.Color;
 //comentado para nao ficar com warning chato import javax.swing.JFileChooser;
@@ -18,7 +18,7 @@ public class TelaTerminal extends JFrame {
         painel.setBackground(Color.BLACK); // define a cor do painel
 
         titulo.setForeground(Color.GREEN); // declara o objeto titulo
-        titulo.setBounds(280, 50, 200, 20); // posiciona o titulo dentro do painel x,y,width,height
+        titulo.setBounds(280, 30, 200, 20); // posiciona o titulo dentro do painel x,y,width,height
 
         add(painel); // adciona o painel a tela
         painel.add(titulo); // adciona o titulo ao painel

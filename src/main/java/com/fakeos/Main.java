@@ -2,6 +2,8 @@ package com.fakeos;
 
 import javax.swing.SwingUtilities;
 
+import com.fakeos.telas.TelaTerminal;
+
 public class Main {
     public static void main(String[] args) {
         // forma segura de criar e editar a interface gráfica
