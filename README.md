@@ -63,9 +63,10 @@ Essa abordagem torna o sistema **intuitivo e multiplataforma** (Windows, Linux, 
 ---
 
 ## 📁 Estrutura do Projeto
-📦 fakeos
-├── src
-│ ├── Main.java
-│ └── telas
-│ └── TelaTerminal.java
+📦 fakeos<br>
+├── src<br>
+│   ├── Main.java<br>
+│   └── telas<br>
+│       └── TelaTerminal.java<br>
 └── README.md
+
