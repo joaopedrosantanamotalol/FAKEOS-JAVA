@@ -63,4 +63,9 @@ Essa abordagem torna o sistema **intuitivo e multiplataforma** (Windows, Linux, 
 ---
 
 ## 📁 Estrutura do Projeto
-
+📦 micro-sistema-utilitario
+┣ 📂 src
+┃ ┗ 📜 Main.java
+┃ ┗ 📂 telas
+┃   ┗ TelaTerminal.java
+┣ 📜 README.md
