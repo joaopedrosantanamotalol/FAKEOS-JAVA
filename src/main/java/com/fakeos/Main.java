@@ -1,7 +1,7 @@
 package com.fakeos;
 
 import javax.swing.SwingUtilities;
-
+import com.fakeos.comandos.*;
 import com.fakeos.telas.TelaTerminal;
 
 public class Main {
@@ -12,6 +12,6 @@ public class Main {
             // setVisible(true) diz que a tela É visivel kkkkkkk
             new TelaTerminal().setVisible(true);
         });
-
+        criarArquivos.create();
     }
 }
