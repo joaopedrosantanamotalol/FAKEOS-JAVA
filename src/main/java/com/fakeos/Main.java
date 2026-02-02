@@ -12,6 +12,5 @@ public class Main {
             // setVisible(true) diz que a tela É visivel kkkkkkk
             new TelaTerminal().setVisible(true);
         });
-        criarArquivos.create();
     }
 }
