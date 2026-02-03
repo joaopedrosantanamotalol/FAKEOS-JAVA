@@ -19,19 +19,7 @@ public interface criarArquivos   {
             System.out.println(e);
         }
     }
-
-    // Função que recebe o caminho para criar o arquivo
-    public static void createArchive(Path caminhoCompleto){
-        try{
-            Files.createFile(caminhoCompleto);
-            System.out.println("Arquivo criado");
-        }
-        catch(FileAlreadyExistsException e){
-            System.out.println("Arquivo ja existe:: "+e);
-        }
-        catch(IOException e){
-            System.out.println("Erro:: "+e);
-        }
+    public static void main(String[] args) {
+        createArchive("/home/felipe/Documents/Java/joao_pedro.txt");
     }
-
 }

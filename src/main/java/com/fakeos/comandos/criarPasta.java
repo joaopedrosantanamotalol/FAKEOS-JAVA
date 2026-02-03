@@ -1,23 +1,22 @@
 package com.fakeos.comandos;
 import java.nio.file.*;
+import java.io.IOException;
 public class criarPasta {
     
-    /**
-    public void createDirectory(String nome){
+    public static void createDirectory(String nome){
         Path dirPath = Paths.get(nome);
         try{
-            if(){
-            
-            }else{
                 Files.createDirectory(dirPath);
-                }
-        }catch(IOException e){
+        }
+        catch(FileAlreadyExistsException e){ // Catch para tratar erro caso diretório já exista
+            System.out.println("Diretório já existe::");
+        }
+        catch(IOException e){
             System.out.println(e);
         }
     }
-*/
 
-    public void checkDirectoryExistence(){
-
+    public static void main(String[] args) {
+        createDirectory("/home/felipe/Documents/Java/arroz_e_feijao");
     }
 }
