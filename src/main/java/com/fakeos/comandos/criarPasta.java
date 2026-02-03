@@ -16,7 +16,4 @@ public class criarPasta {
         }
     }
 
-    public static void main(String[] args) {
-        createDirectory("/home/felipe/Documents/Java/arroz_e_feijao");
-    }
 }

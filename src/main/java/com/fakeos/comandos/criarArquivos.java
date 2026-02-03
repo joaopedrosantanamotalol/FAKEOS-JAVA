@@ -19,7 +19,4 @@ public interface criarArquivos   {
             System.out.println(e);
         }
     }
-    public static void main(String[] args) {
-        createArchive("/home/felipe/Documents/Java/joao_pedro.txt");
-    }
 }
