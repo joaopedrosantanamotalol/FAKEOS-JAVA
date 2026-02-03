@@ -10,7 +10,13 @@ public interface criarArquivos   {
         Path nomeArquivo = Paths.get(nome);
         try{
             if(checkArchiveExistence(nome)){
-                    /// Implementar GUI para questionar se deseja sobscrever
+                String resposta = "Arquivo já existe, deseja sobscreve-lo ?";
+                // Pedir entrada para confirmar a sobscrita do arquivo já existente
+                /**if (){
+
+                }else{
+                    System.out.println("algo");
+                }  **/              
             }else{
             Files.createFile(nomeArquivo); // Função principal por criar os arquivos
             }
@@ -21,7 +27,17 @@ public interface criarArquivos   {
 
     // Função que recebe o caminho para criar o arquivo
     public static void create(Path caminhoCompleto){
+        Path path = caminhoCompleto;
+        try{
+            if(checkArchiveExistence(caminhoCompleto.toString())){ // Chama a função para verificar se o arquivo existe convertendo para String o caminho completo
+                // Pedir entrada do usuário para confirmar a sobscrita do arquivo já existente
 
+            }else {
+                Files.createFile(caminhoCompleto);
+            }
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }
 
 
@@ -31,8 +47,6 @@ public interface criarArquivos   {
         boolean existe = false;
         if (Files.exists(path)){
             existe = true;
-        }else {
-            System.out.println("batata");
         }
         return existe;
     }
