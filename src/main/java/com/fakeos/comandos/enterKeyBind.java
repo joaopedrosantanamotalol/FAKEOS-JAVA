@@ -11,10 +11,12 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import com.fakeos.telas.TelaTerminal;
+import com.fakeos.comandos.*;
 
 public class enterKeyBind {
     // ===== FUNÇÃO PARA O ENTER ENVIAR OS DADOS DO JTEXFIELD
-    public static void bindEnter(
+    acoes acao = new acoes();
+    public ArrayList<String> bindEnter(
         JTextField area,
         ArrayList<String> lista,
         JPanel painel,
@@ -30,7 +32,10 @@ public class enterKeyBind {
                 String texto = area.getText().trim();
 
                 if (!texto.isEmpty()) {
+
                     lista.add(texto);
+
+                    acao.ajuda(texto);
 
                     JLabel novo = new JLabel(">>> " + texto);
                     novo.setForeground(Color.GREEN);
@@ -47,6 +52,7 @@ public class enterKeyBind {
                 }
             }
         });
+        return(lista);
 }
 
 }

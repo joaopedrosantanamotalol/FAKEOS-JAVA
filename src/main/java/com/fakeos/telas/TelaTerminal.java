@@ -29,6 +29,8 @@ public class TelaTerminal extends JFrame {
     int expessura = 2;
     Border bordaCustomizada = BorderFactory.createLineBorder(borda, expessura);
 
+    enterKeyBind entkey = new enterKeyBind();
+
     public TelaTerminal() {
 
         // ===== JFRAME =====
@@ -76,7 +78,7 @@ public class TelaTerminal extends JFrame {
         inputArea.setBorder(bordaCustomizada);
 
         // ===== CHAMADA DO MÉTODO KEYBIND PRO ENTER =====
-        enterKeyBind.bindEnter(inputArea, inputs, painelMeio, this);
+        entkey.bindEnter(inputArea, inputs, painelMeio, this);
 
         for (int i = 0; i < inputs.size(); i++) {
             congelados[i] = new JLabel(inputs.get(i));
