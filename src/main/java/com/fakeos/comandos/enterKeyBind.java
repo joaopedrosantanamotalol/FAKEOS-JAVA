@@ -15,7 +15,7 @@ import com.fakeos.telas.TelaTerminal;
 public class enterKeyBind {
     
     acoes AcaoTerminal = new acoes();
-    
+
     // ===== FUNÇÃO PARA O ENTER ENVIAR OS DADOS DO JTEXFIELD
     public ArrayList<String> bindEnter(
         JTextField area,
@@ -35,7 +35,16 @@ public class enterKeyBind {
                 if (!texto.isEmpty()) {
 
                     lista.add(texto);
-                    AcaoTerminal.Exemplo();
+                    
+                    switch (texto) {
+                        case "ajuda":
+                            AcaoTerminal.Exemplo();
+                            break;
+                    
+                        default:
+                            System.out.println("comando não encontrado");
+                            break;
+                    }
 
                     JLabel novo = new JLabel(">>> " + texto);
                     novo.setForeground(Color.GREEN);
