@@ -2,6 +2,7 @@ package com.fakeos.telas;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class TelaTerminal extends JFrame {
 
@@ -11,11 +12,16 @@ public class TelaTerminal extends JFrame {
     JLabel titulo = new JLabel("BEM-VINDO");
     JLabel introducao = new JLabel(">>>Ola, você tem os comandos:");
     JLabel textoInput = new JLabel("Digite o comando Desejado");
+
     // ===== STRING MOMENTANEO PARA EXIBIÇÃO =====
     String[] comandos = { ">>>HelloWorld", ">>>help", ">>>Insert" };
     String[] inputCongelago = {};
     JLabel[] labels = new JLabel[comandos.length];
     JTextField inputArea = new JTextField();
+
+    Color borda = Color.GREEN;
+    int expessura = 2;
+    Border bordaCustomizada = BorderFactory.createLineBorder(borda, expessura);
 
     public TelaTerminal() {
 
@@ -44,6 +50,7 @@ public class TelaTerminal extends JFrame {
         titulo.setForeground(Color.GREEN); // define a cor como verde
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT); // alinha ao centro
 
+        // ===== ESTILIZAÇÃO DAS OPÇÕES DE COMANDOS =====
         introducao.setVisible(false); // define introducao como invisivel
         introducao.setForeground(Color.GREEN); // define a cor verde (mesmo que esteja invisivel)
 
@@ -52,10 +59,12 @@ public class TelaTerminal extends JFrame {
         inputArea.setPreferredSize(new Dimension(600, 30));
         inputArea.setBackground(Color.BLACK);
         inputArea.setForeground(Color.GREEN);
+        inputArea.setBorder(bordaCustomizada);
 
         // ===== ESTILIZAÇÃO DA LABEL DO INPUT =====
         textoInput.setForeground(Color.GREEN);
         textoInput.setPreferredSize(new Dimension(Integer.MAX_VALUE, 20));
+        
 
 
         Timer timerIntro = new Timer(1500, e -> introducao.setVisible(true)); //timer para fazer introducao ser visivel
