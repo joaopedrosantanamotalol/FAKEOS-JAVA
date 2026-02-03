@@ -3,6 +3,9 @@ package com.fakeos.telas;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
+import java.util.ArrayList;
+
+import com.fakeos.comandos.enterKeyBind;
 
 public class TelaTerminal extends JFrame {
 
@@ -13,10 +16,12 @@ public class TelaTerminal extends JFrame {
     JLabel introducao = new JLabel(">>>Ola, você tem os comandos:");
     JLabel textoInput = new JLabel("Digite o comando Desejado");
 
+    ArrayList<String> inputs = new ArrayList<>();
+
     // ===== STRING MOMENTANEO PARA EXIBIÇÃO =====
     String[] comandos = { ">>>HelloWorld", ">>>help", ">>>Insert" };
-    String[] inputCongelago = {};
     JLabel[] labels = new JLabel[comandos.length];
+    JLabel[] congelados = new JLabel[inputs.size()];
     JTextField inputArea = new JTextField();
 
     Color borda = Color.GREEN;
@@ -27,7 +32,7 @@ public class TelaTerminal extends JFrame {
 
         // ===== JFRAME =====
         setTitle("Tela Terminal"); // define titulo
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //fala que é pra sair quando fechar 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // fala que é pra sair quando fechar
         setSize(600, 600); // tamanho da janela
         setLocationRelativeTo(null); // relativo a nada
         setLayout(new BorderLayout()); // layout definido como BorderLayout
@@ -61,13 +66,22 @@ public class TelaTerminal extends JFrame {
         inputArea.setForeground(Color.GREEN);
         inputArea.setBorder(bordaCustomizada);
 
+        // ===== CHAMADA DO MÉTODO KEYBIND PRO ENTER =====
+        enterKeyBind.bindEnter(inputArea, inputs, painelMeio);
+
+        for(int i = 0; i<inputs.size(); i++){
+            congelados[i] = new JLabel(inputs.get(i));
+            congelados[i].setForeground(Color.GREEN);
+            congelados[i].setVisible(false);
+            congelados[i].setAlignmentX(Component.LEFT_ALIGNMENT);
+            painelMeio.add(congelados[i]);
+        };
+
         // ===== ESTILIZAÇÃO DA LABEL DO INPUT =====
         textoInput.setForeground(Color.GREEN);
         textoInput.setPreferredSize(new Dimension(Integer.MAX_VALUE, 20));
-        
 
-
-        Timer timerIntro = new Timer(1500, e -> introducao.setVisible(true)); //timer para fazer introducao ser visivel
+        Timer timerIntro = new Timer(1500, e -> introducao.setVisible(true)); // timer para fazer introducao ser visivel
         Timer timerComandos = new Timer(2500, e -> { // timer para criar as Jlabel's baseada em labels
             for (JLabel label : labels) {
                 label.setVisible(true);// define como visivel
@@ -87,7 +101,7 @@ public class TelaTerminal extends JFrame {
 
         painelMeio.add(introducao);// adciona introducao no painelBaixo
         painelMeio.add(Box.createVerticalStrut(30));// componente invisivel que age de forma elastica
-        
+
         for (int i = 0; i < comandos.length; i++) {// criação de cada JLabel com o laço for
             labels[i] = new JLabel(comandos[i]);
             labels[i].setForeground(Color.GREEN);

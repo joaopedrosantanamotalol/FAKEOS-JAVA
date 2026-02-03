@@ -1,7 +1,7 @@
 package com.fakeos;
 
 import javax.swing.SwingUtilities;
-import com.fakeos.comandos.*;
+//import com.fakeos.comandos.*;
 import com.fakeos.telas.TelaTerminal;
 
 public class Main {
