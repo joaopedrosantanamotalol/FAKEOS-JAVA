@@ -13,6 +13,7 @@ public class TelaTerminal extends JFrame {
     JLabel textoInput = new JLabel("Digite o comando Desejado");
     // ===== STRING MOMENTANEO PARA EXIBIÇÃO =====
     String[] comandos = { ">>>HelloWorld", ">>>help", ">>>Insert" };
+    String[] inputCongelago = {};
     JLabel[] labels = new JLabel[comandos.length];
     JTextField inputArea = new JTextField();
 
