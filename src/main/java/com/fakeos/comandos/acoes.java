@@ -1,13 +1,18 @@
 package com.fakeos.comandos;
-import javax.swing.*;
+import com.fakeos.comandos.terminalResposta.*;
 
 public class acoes {
-    
-    public void ajuda(String comando){
+
+    exemplo exemplo = new exemplo();
+    public void ajuda(){
         // chamada de método
     }
-    public void criarArquivo(String comando){
+    public void criarArquivo(){
         // chamada de método
     }
 
+    public void Exemplo(){
+        exemplo.Exemplo("Funcionou");
+        // levar classe acoes para enterKeyBind
+    }
 }
