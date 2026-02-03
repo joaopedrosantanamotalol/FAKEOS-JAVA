@@ -7,11 +7,14 @@ public class TelaTerminal extends JFrame {
 
     JPanel painelTopo = new JPanel();
     JPanel painelBaixo = new JPanel();
+    JPanel painelMeio = new JPanel();
     JLabel titulo = new JLabel("BEM-VINDO");
     JLabel introducao = new JLabel(">>>Ola, você tem os comandos:");
+    JLabel textoInput = new JLabel("Digite o comando Desejado");
     // ===== STRING MOMENTANEO PARA EXIBIÇÃO =====
     String[] comandos = { ">>>HelloWorld", ">>>help", ">>>Insert" };
     JLabel[] labels = new JLabel[comandos.length];
+    JTextField inputArea = new JTextField();
 
     public TelaTerminal() {
 
@@ -27,19 +30,32 @@ public class TelaTerminal extends JFrame {
         painelTopo.setBackground(Color.BLACK); // define a cor como preta
         painelTopo.setLayout(new BoxLayout(painelTopo, BoxLayout.Y_AXIS)); // layout baseado no eixo Y
 
+        // ===== PAINEL TOPO (ALTURA FIXA) =====
+        painelMeio.setPreferredSize(new Dimension(600, 50)); // panel width 600 height 50
+        painelMeio.setBackground(Color.BLACK); // define a cor como preta
+        painelMeio.setLayout(new BoxLayout(painelMeio, BoxLayout.Y_AXIS)); // layout baseado no eixo Y
+
         // ===== PAINEL BAIXO (OCUPA O RESTO) =====
         painelBaixo.setBackground(Color.BLACK); // define a cor como preto
         painelBaixo.setLayout(new BoxLayout(painelBaixo, BoxLayout.Y_AXIS));// layout baseado no eixo Y
 
+        // ===== ESTILIZAÇÃO DO TITULO =====
         titulo.setForeground(Color.GREEN); // define a cor como verde
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT); // alinha ao centro
 
-        painelTopo.add(Box.createVerticalGlue());// componente invisivel que age de forma elastica
-        painelTopo.add(titulo);// adciona titulo ao painel de cima
-        painelTopo.add(Box.createVerticalGlue());// componente invisivel que age de forma elastica
-
         introducao.setVisible(false); // define introducao como invisivel
         introducao.setForeground(Color.GREEN); // define a cor verde (mesmo que esteja invisivel)
+
+        // ===== ESTILIZAÇÃO DO INPUT =====
+        inputArea.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+        inputArea.setPreferredSize(new Dimension(600, 30));
+        inputArea.setBackground(Color.BLACK);
+        inputArea.setForeground(Color.GREEN);
+
+        // ===== ESTILIZAÇÃO DA LABEL DO INPUT =====
+        textoInput.setForeground(Color.GREEN);
+        textoInput.setPreferredSize(new Dimension(Integer.MAX_VALUE, 20));
+
 
         Timer timerIntro = new Timer(1500, e -> introducao.setVisible(true)); //timer para fazer introducao ser visivel
         Timer timerComandos = new Timer(2500, e -> { // timer para criar as Jlabel's baseada em labels
@@ -54,21 +70,31 @@ public class TelaTerminal extends JFrame {
         timerIntro.start();// começa a ação do timer
         timerComandos.start();// começa a ação do timer
 
-        painelBaixo.add(introducao);// adciona introducao no painelBaixo
+        // ===== SECÇÃO DOS ADD =====
+        painelTopo.add(Box.createVerticalGlue());// componente invisivel que age de forma elastica
+        painelTopo.add(titulo);// adciona titulo ao painel de cima
+        painelTopo.add(Box.createVerticalStrut(10));// componente invisivel que age de forma elastica
 
-        painelBaixo.add(Box.createVerticalStrut(10));// adciona espaço invisivel com o tamanho de 10 px
+        painelMeio.add(introducao);// adciona introducao no painelBaixo
+        painelMeio.add(Box.createVerticalStrut(30));// componente invisivel que age de forma elastica
         
         for (int i = 0; i < comandos.length; i++) {// criação de cada JLabel com o laço for
             labels[i] = new JLabel(comandos[i]);
             labels[i].setForeground(Color.GREEN);
             labels[i].setVisible(false);
             labels[i].setAlignmentX(Component.LEFT_ALIGNMENT);
-            painelBaixo.add(labels[i]);
+            painelMeio.add(labels[i]);
         }
+
+        painelBaixo.add(Box.createVerticalStrut(10));
+        painelBaixo.add(textoInput);
+        painelBaixo.add(Box.createVerticalStrut(10));
+        painelBaixo.add(inputArea);
 
         // ===== ADICIONANDO NO FRAME =====
         add(painelTopo, BorderLayout.NORTH);
-        add(painelBaixo, BorderLayout.CENTER);
+        add(painelMeio, BorderLayout.CENTER);
+        add(painelBaixo, BorderLayout.SOUTH);
 
         setVisible(true);
     }
