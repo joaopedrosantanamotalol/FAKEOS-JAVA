@@ -10,13 +10,15 @@ import javax.swing.KeyStroke;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.*;
+import com.fakeos.telas.TelaTerminal;
 
 public class enterKeyBind {
     // ===== FUNÇÃO PARA O ENTER ENVIAR OS DADOS DO JTEXFIELD
     public static void bindEnter(
         JTextField area,
         ArrayList<String> lista,
-        JPanel painel
+        JPanel painel,
+        TelaTerminal telaTerminal
 ) {
     area.getInputMap(JComponent.WHEN_FOCUSED)
         .put(KeyStroke.getKeyStroke("ENTER"), "enviarTexto");
@@ -41,6 +43,7 @@ public class enterKeyBind {
                     painel.repaint();    
 
                     area.setText("");
+                    telaTerminal.scrollToBottom();
                 }
             }
         });

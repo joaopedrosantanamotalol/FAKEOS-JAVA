@@ -12,6 +12,7 @@ public class TelaTerminal extends JFrame {
     JPanel painelTopo = new JPanel();
     JPanel painelBaixo = new JPanel();
     JPanel painelMeio = new JPanel();
+    JScrollPane scroll = new JScrollPane(painelMeio);
     JLabel titulo = new JLabel("BEM-VINDO");
     JLabel introducao = new JLabel(">>>Ola, você tem os comandos:");
     JLabel textoInput = new JLabel("Digite o comando Desejado");
@@ -43,13 +44,21 @@ public class TelaTerminal extends JFrame {
         painelTopo.setLayout(new BoxLayout(painelTopo, BoxLayout.Y_AXIS)); // layout baseado no eixo Y
 
         // ===== PAINEL TOPO (ALTURA FIXA) =====
-        painelMeio.setPreferredSize(new Dimension(600, 50)); // panel width 600 height 50
         painelMeio.setBackground(Color.BLACK); // define a cor como preta
         painelMeio.setLayout(new BoxLayout(painelMeio, BoxLayout.Y_AXIS)); // layout baseado no eixo Y
 
         // ===== PAINEL BAIXO (OCUPA O RESTO) =====
         painelBaixo.setBackground(Color.BLACK); // define a cor como preto
         painelBaixo.setLayout(new BoxLayout(painelBaixo, BoxLayout.Y_AXIS));// layout baseado no eixo Y
+
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setBorder(null);
+
+        SwingUtilities.invokeLater(() -> {
+            JScrollBar bar = scroll.getVerticalScrollBar();
+            bar.setValue(bar.getMaximum());
+        });
 
         // ===== ESTILIZAÇÃO DO TITULO =====
         titulo.setForeground(Color.GREEN); // define a cor como verde
@@ -67,9 +76,9 @@ public class TelaTerminal extends JFrame {
         inputArea.setBorder(bordaCustomizada);
 
         // ===== CHAMADA DO MÉTODO KEYBIND PRO ENTER =====
-        enterKeyBind.bindEnter(inputArea, inputs, painelMeio);
+        enterKeyBind.bindEnter(inputArea, inputs, painelMeio, this);
 
-        for(int i = 0; i<inputs.size(); i++){
+        for (int i = 0; i < inputs.size(); i++) {
             congelados[i] = new JLabel(inputs.get(i));
             congelados[i].setForeground(Color.GREEN);
             congelados[i].setVisible(false);
@@ -81,11 +90,19 @@ public class TelaTerminal extends JFrame {
         textoInput.setForeground(Color.GREEN);
         textoInput.setPreferredSize(new Dimension(Integer.MAX_VALUE, 20));
 
-        Timer timerIntro = new Timer(1500, e -> introducao.setVisible(true)); // timer para fazer introducao ser visivel
+        Timer timerIntro = new Timer(1500, e -> {
+            introducao.setVisible(true); 
+            painelMeio.revalidate();
+            painelMeio.repaint();
+            scrollToBottom();
+        }); // timer para fazer introducao ser visivel
         Timer timerComandos = new Timer(2500, e -> { // timer para criar as Jlabel's baseada em labels
             for (JLabel label : labels) {
                 label.setVisible(true);// define como visivel
             }
+            painelMeio.revalidate();
+            painelMeio.repaint();
+            scrollToBottom();
         });
 
         timerIntro.setRepeats(false);// fala pro timer nao repetir
@@ -117,9 +134,16 @@ public class TelaTerminal extends JFrame {
 
         // ===== ADICIONANDO NO FRAME =====
         add(painelTopo, BorderLayout.NORTH);
-        add(painelMeio, BorderLayout.CENTER);
+        add(scroll, BorderLayout.CENTER);
         add(painelBaixo, BorderLayout.SOUTH);
 
         setVisible(true);
+    }
+     public void scrollToBottom() {
+        SwingUtilities.invokeLater(() -> {
+        painelMeio.revalidate();
+        JScrollBar vertical = scroll.getVerticalScrollBar();
+        vertical.setValue(vertical.getMaximum());
+        });
     }
 }
