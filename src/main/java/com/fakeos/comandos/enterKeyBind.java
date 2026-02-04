@@ -35,16 +35,6 @@ public class enterKeyBind {
                 if (!texto.isEmpty()) {
 
                     lista.add(texto);
-                    
-                    switch (texto) {
-                        case "ajuda":
-                            AcaoTerminal.Exemplo();
-                            break;
-                    
-                        default:
-                            System.out.println("comando não encontrado");
-                            break;
-                    }
 
                     JLabel novo = new JLabel(">>> " + texto);
                     novo.setForeground(Color.GREEN);
@@ -52,12 +42,22 @@ public class enterKeyBind {
 
                     painel.add(Box.createVerticalStrut(10));
                     painel.add(novo);
-
                     painel.revalidate();
                     painel.repaint();    
 
                     area.setText("");
+                    
+                    switch (texto) {
+                        case "ajuda":
+                            AcaoTerminal.ajuda(painel);
+                            break;
+                    
+                        default:
+                            System.out.println("comando não encontrado");
+                            break;
+                    }
                     telaTerminal.scrollToBottom();
+                    
                 }
             }
         });
