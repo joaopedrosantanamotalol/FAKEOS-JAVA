@@ -14,7 +14,7 @@ public class mais {
         + "insert<br>"
         +"Mais</html>");
         textoAjuda.setForeground(Color.GREEN);
-        painel.add(Box.createVerticalStrut(10));
+        painel.add(Box.createVerticalStrut(20));
         painel.add(textoAjuda);
     }
 }

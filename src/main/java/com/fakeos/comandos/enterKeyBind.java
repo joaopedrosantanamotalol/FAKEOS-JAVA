@@ -48,11 +48,12 @@ public class enterKeyBind {
                     area.setText("");
                     
                     switch (texto) {
-                        case "ajuda":
+                        case "Ajuda":
                             AcaoTerminal.ajuda(painel);
                             break;
-                        case "mais":
+                        case "Mais":
                             AcaoTerminal.mais(painel);
+                            break;
                         default:
                             System.out.println("comando não encontrado");
                             break;
