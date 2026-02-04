@@ -51,11 +51,13 @@ public class enterKeyBind {
                         case "ajuda":
                             AcaoTerminal.ajuda(painel);
                             break;
-                    
+                        case "mais":
+                            AcaoTerminal.mais(painel);
                         default:
                             System.out.println("comando não encontrado");
                             break;
                     }
+
                     telaTerminal.scrollToBottom();
                     
                 }

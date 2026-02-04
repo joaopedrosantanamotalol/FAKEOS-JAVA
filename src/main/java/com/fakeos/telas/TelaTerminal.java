@@ -20,7 +20,7 @@ public class TelaTerminal extends JFrame {
     ArrayList<String> inputs = new ArrayList<>();
 
     // ===== STRING MOMENTANEO PARA EXIBIÇÃO =====
-    String[] comandos = { ">>>HelloWorld", ">>>help", ">>>Insert" };
+    String[] comandos = { ">>>HelloWorld", ">>>ajuda", ">>>Insert" };
     JLabel[] labels = new JLabel[comandos.length];
     JLabel[] congelados = new JLabel[inputs.size()];
     JTextField inputArea = new JTextField();

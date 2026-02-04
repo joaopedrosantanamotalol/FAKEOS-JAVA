@@ -3,12 +3,15 @@ import java.awt.Color;
 
 import javax.swing.*;
 
-public class ajuda {
+public class mais {
 
-    public void AjudaComando(
-        JPanel painel    
+    public void MaisComando(
+        JPanel painel
     ){
-        JLabel textoAjuda = new JLabel(">>> Ajudado");
+        JLabel textoAjuda = new JLabel("<html>>> Os comandos presentes são:<br><br>"
+        + "HelloWorld<br>"
+        + "ajuda<br>"
+        + "insert</html>");
         textoAjuda.setForeground(Color.GREEN);
         painel.add(Box.createVerticalStrut(10));
         painel.add(textoAjuda);

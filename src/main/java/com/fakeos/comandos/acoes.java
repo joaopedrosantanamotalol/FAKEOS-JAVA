@@ -7,10 +7,14 @@ public class acoes {
 
     exemplo exemplo = new exemplo();
     ajuda ajuda = new ajuda();
-    
+    mais mais = new mais();
+
     public void ajuda(JPanel painel){
        
         ajuda.AjudaComando(painel);
+    }
+    public void mais(JPanel painel){
+        mais.MaisComando(painel);
     }
     public void criarArquivo(){
         // chamada de método
