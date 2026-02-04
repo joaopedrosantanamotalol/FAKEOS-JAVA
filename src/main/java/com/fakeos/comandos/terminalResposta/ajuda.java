@@ -8,7 +8,7 @@ public class ajuda {
     public void AjudaComando(
         JPanel painel    
     ){
-        JLabel textoAjuda = new JLabel(">>> Ajudado");
+        JLabel textoAjuda = new JLabel("Ajudado");
         textoAjuda.setForeground(Color.GREEN);
         painel.add(Box.createVerticalStrut(10));
         painel.add(textoAjuda);
