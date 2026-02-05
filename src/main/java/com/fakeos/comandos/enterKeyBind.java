@@ -33,8 +33,10 @@ public class enterKeyBind {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String texto = area.getText().trim();
+                        
 
                         if (!texto.isEmpty()) {
+                            telaTerminal.setValorTerminal(texto);
                             String[] partes = texto.split("\\s+");
                             String comando = partes[0].toLowerCase();
                             String argumento = partes.length > 1 ? partes[1] : null;
