@@ -3,7 +3,7 @@ import java.nio.file.*;
 import java.io.IOException;
 public class criarPasta {
     
-    public static void createDirectory(String nome){
+    public  void createDirectory(String nome){
         Path dirPath = Paths.get(nome);
         try{
                 Files.createDirectory(dirPath);

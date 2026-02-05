@@ -10,7 +10,7 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             // new terminal é a instancia do construtor da pagina
             // setVisible(true) diz que a tela É visivel kkkkkkk
-            new TelaTerminal().setVisible(true);
+            new TelaTerminal(null).setVisible(true);
         });
     }
 }

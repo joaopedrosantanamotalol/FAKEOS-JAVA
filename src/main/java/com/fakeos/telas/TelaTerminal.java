@@ -9,6 +9,8 @@ import com.fakeos.comandos.enterKeyBind;
 
 public class TelaTerminal extends JFrame {
 
+    private String valorTerminal; // variavel para pegar conteudo do terminal e usar em comandos
+
     JPanel painelTopo = new JPanel();
     JPanel painelBaixo = new JPanel();
     JPanel painelMeio = new JPanel();
@@ -29,9 +31,10 @@ public class TelaTerminal extends JFrame {
     int expessura = 2;
     Border bordaCustomizada = BorderFactory.createLineBorder(borda, expessura);
 
-    enterKeyBind entkey = new enterKeyBind();
+    enterKeyBind entkey = new enterKeyBind(this); // objeto telaTerminal que está sendo criado
 
-    public TelaTerminal() {
+    public TelaTerminal(String valorTerminal) {
+    this.valorTerminal = valorTerminal;
 
         // ===== JFRAME =====
         setTitle("Tela Terminal"); // define titulo
@@ -147,5 +150,8 @@ public class TelaTerminal extends JFrame {
         JScrollBar vertical = scroll.getVerticalScrollBar();
         vertical.setValue(vertical.getMaximum());
         });
+    }
+     public String getvalorTerminal(){
+        return valorTerminal;
     }
 }

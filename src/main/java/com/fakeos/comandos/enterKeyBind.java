@@ -13,58 +13,66 @@ import java.awt.*;
 import com.fakeos.telas.TelaTerminal;
 
 public class enterKeyBind {
-    
-    acoes AcaoTerminal = new acoes();
 
-    // ===== FUNÇÃO PARA O ENTER ENVIAR OS DADOS DO JTEXFIELD
+    private acoes acaoTerminal;
+
+    public enterKeyBind(TelaTerminal telaTerminal) {
+        this.acaoTerminal = new acoes(telaTerminal);
+    }
+
     public ArrayList<String> bindEnter(
-        JTextField area,
-        ArrayList<String> lista,
-        JPanel painel,
-        TelaTerminal telaTerminal
-) {
-    area.getInputMap(JComponent.WHEN_FOCUSED)
-        .put(KeyStroke.getKeyStroke("ENTER"), "enviarTexto");
+            JTextField area,
+            ArrayList<String> lista,
+            JPanel painel,
+            TelaTerminal telaTerminal) {
+        area.getInputMap(JComponent.WHEN_FOCUSED)
+                .put(KeyStroke.getKeyStroke("ENTER"), "enviarTexto");
 
-    area.getActionMap()
-        .put("enviarTexto", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String texto = area.getText().trim();
+        area.getActionMap()
+                .put("enviarTexto", new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String texto = area.getText().trim();
 
-                if (!texto.isEmpty()) {
+                        if (!texto.isEmpty()) {
+                            String[] partes = texto.split("\\s+");
+                            String comando = partes[0].toLowerCase();
+                            String argumento = partes.length > 1 ? partes[1] : null;
 
-                    lista.add(texto);
+                            JLabel novo = new JLabel(">>> " + texto);
+                            novo.setForeground(Color.GREEN);
+                            novo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-                    JLabel novo = new JLabel(">>> " + texto);
-                    novo.setForeground(Color.GREEN);
-                    novo.setAlignmentX(Component.LEFT_ALIGNMENT);
+                            painel.add(Box.createVerticalStrut(10));
+                            painel.add(novo);
 
-                    painel.add(Box.createVerticalStrut(10));
-                    painel.add(novo);
-                    painel.revalidate();
-                    painel.repaint();    
+                            area.setText("");
 
-                    area.setText("");
-                    
-                    switch (texto) {
-                        case "Ajuda":
-                            AcaoTerminal.ajuda(painel);
-                            break;
-                        case "Mais":
-                            AcaoTerminal.mais(painel);
-                            break;
-                        default:
-                            System.out.println("comando não encontrado");
-                            break;
+                            switch (comando) {
+                                case "ajuda":
+                                    acaoTerminal.ajuda(painel);
+                                    break;
+                                case "mais":
+                                    acaoTerminal.mais(painel);
+                                    break;
+                                case "cpasta":
+                                    if (argumento == null) {
+                                        System.out.println("Uso correto: CPasta nomeDaPasta");
+                                    } else {
+                                        acaoTerminal.CriarPasta(argumento);
+                                    }
+                                    break;
+                                default:
+                                    System.out.println("comando não encontrado");
+                            }
+
+                            painel.revalidate();
+                            painel.repaint();
+                            telaTerminal.scrollToBottom();
+                        }
                     }
+                });
 
-                    telaTerminal.scrollToBottom();
-                    
-                }
-            }
-        });
-        return(lista);
-}
-
+        return lista;
+    }
 }
