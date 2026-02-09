@@ -31,6 +31,10 @@ public class acoes {
         System.out.println("criando pasta: "+nome);
         criarPasta.createDirectory(nome);
     }
+    public void CriarArquivo(String nome){
+        System.out.println("criando arquivo: "+nome);
+        criarArquivos.createArchive(nome);
+    }
     public acoes(TelaTerminal telaTerminal){
         this.telaTerminal = telaTerminal;
     }

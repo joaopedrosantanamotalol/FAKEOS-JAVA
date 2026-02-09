@@ -59,9 +59,17 @@ public class enterKeyBind {
                                     break;
                                 case "cpasta":
                                     if (argumento == null) {
-                                        System.out.println("Uso correto: CPasta nomeDaPasta");
+                                        System.out.println("Uso correto: cpasta nomeDaPasta");
                                     } else {
                                         acaoTerminal.CriarPasta(argumento);
+                                    }
+                                    break;
+                                case "carquivo":
+                                    if(argumento == null){
+                                        System.out.println("Uso correto: carquivo nomeDoArquivo");
+                                    }
+                                    else{
+                                        acaoTerminal.CriarArquivo(argumento);
                                     }
                                     break;
                                 default:
