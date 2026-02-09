@@ -26,7 +26,7 @@ public class enterKeyBind {
             JPanel painel,
             TelaTerminal telaTerminal) {
 
-                ArrayList<String> comandos = new ArrayList<>();
+        ArrayList<String> comandos = new ArrayList<>();
 
         area.getInputMap(JComponent.WHEN_FOCUSED)
                 .put(KeyStroke.getKeyStroke("ENTER"), "enviarTexto");
@@ -36,7 +36,6 @@ public class enterKeyBind {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String texto = area.getText().trim();
-                        
 
                         if (!texto.isEmpty()) {
                             telaTerminal.setValorTerminal(texto);
@@ -68,10 +67,9 @@ public class enterKeyBind {
                                     }
                                     break;
                                 case "carquivo":
-                                    if(argumento == null){
+                                    if (argumento == null) {
                                         System.out.println("Uso correto: carquivo nomeDoArquivo");
-                                    }
-                                    else{
+                                    } else {
                                         acaoTerminal.CriarArquivo(argumento);
                                     }
                                     break;
