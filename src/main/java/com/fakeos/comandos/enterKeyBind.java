@@ -25,6 +25,9 @@ public class enterKeyBind {
             ArrayList<String> lista,
             JPanel painel,
             TelaTerminal telaTerminal) {
+
+                ArrayList<String> comandos = new ArrayList<>();
+
         area.getInputMap(JComponent.WHEN_FOCUSED)
                 .put(KeyStroke.getKeyStroke("ENTER"), "enviarTexto");
 
@@ -75,7 +78,8 @@ public class enterKeyBind {
                                 default:
                                     System.out.println("comando não encontrado");
                             }
-
+                            comandos.add(comando);
+                            System.out.println(comandos);
                             painel.revalidate();
                             painel.repaint();
                             telaTerminal.scrollToBottom();
