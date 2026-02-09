@@ -7,10 +7,13 @@ import com.fakeos.telas.TelaTerminal;
 public class acoes {
 
     private TelaTerminal telaTerminal;
+    
     exemplo exemplo = new exemplo();
     ajuda ajuda = new ajuda();
     mais mais = new mais();
     criarPasta criarPasta = new criarPasta();
+    IpShow ip = new IpShow();
+    redeShow wifi = new redeShow();
 
     public void ajuda(JPanel painel){
        
@@ -34,6 +37,12 @@ public class acoes {
     public void CriarArquivo(String nome){
         System.out.println("criando arquivo: "+nome);
         criarArquivos.createArchive(nome);
+    }
+    public String ShowIp(){
+       return ip.PegarMostrarIp();
+    }
+    public String mostrarWifi(){
+        return wifi.mostrarWifi();
     }
     public acoes(TelaTerminal telaTerminal){
         this.telaTerminal = telaTerminal;

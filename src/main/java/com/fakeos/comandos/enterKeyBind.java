@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.*;
@@ -53,12 +55,15 @@ public class enterKeyBind {
                             area.setText("");
 
                             switch (comando) {
+                                
                                 case "ajuda":
                                     acaoTerminal.ajuda(painel);
                                     break;
+
                                 case "mais":
                                     acaoTerminal.mais(painel);
                                     break;
+
                                 case "cpasta":
                                     if (argumento == null) {
                                         System.out.println("Uso correto: cpasta nomeDaPasta");
@@ -66,12 +71,46 @@ public class enterKeyBind {
                                         acaoTerminal.CriarPasta(argumento);
                                     }
                                     break;
+
                                 case "carquivo":
                                     if (argumento == null) {
                                         System.out.println("Uso correto: carquivo nomeDoArquivo");
                                     } else {
                                         acaoTerminal.CriarArquivo(argumento);
                                     }
+                                    break;
+
+                                case "meuip":
+                                    String conteudoIp = acaoTerminal.ShowIp();
+                                    painel.add(Box.createVerticalStrut(10));
+                                    JLabel ip = new JLabel(">>>Ip da Máquina:" + conteudoIp);
+                                    ip.setForeground(Color.GREEN);
+                                    painel.add(ip);
+                                    break;
+
+                                case "wifi":
+                                    painel.add(Box.createVerticalStrut(10));
+                                    JLabel aviso = new JLabel("Procurando redes wifi...");
+                                    aviso.setForeground(Color.GREEN);
+                                    painel.add(aviso);
+
+                                    painel.revalidate();
+                                    painel.repaint();
+                                    telaTerminal.scrollToBottom();
+
+
+                                    new Thread(() ->{
+                                        String conteudoWifi = acaoTerminal.mostrarWifi();
+
+                                        SwingUtilities.invokeLater(() -> {
+                                            aviso.setText(conteudoWifi);
+                                            painel.revalidate();
+                                            painel.repaint();
+                                            telaTerminal.scrollToBottom();
+
+                                        });
+                                    }).start();
+
                                     break;
                                 default:
                                     System.out.println("comando não encontrado");
