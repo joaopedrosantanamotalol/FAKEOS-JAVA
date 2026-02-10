@@ -9,10 +9,12 @@ public class mais {
         JPanel painel
     ){
         JLabel textoAjuda = new JLabel("<html>>> Os comandos presentes são:<br><br>"
-        + "HelloWorld<br>"
         + "ajuda<br>"
-        + "insert<br>"
-        +"Mais</html>");
+        + "mais<br>"
+        + "cpasta<br>"
+        + "carquivo<br>"
+        + "meuip<br>"
+        +"wifi</html>");
         textoAjuda.setForeground(Color.GREEN);
         painel.add(Box.createVerticalStrut(20));
         painel.add(textoAjuda);
